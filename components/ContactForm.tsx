@@ -47,8 +47,17 @@ function ContactFormFields({ t }: { t: (path: string) => string }) {
 
   const onSubmit = React.useCallback(
     async (data: FormValues) => {
-      await new Promise((r) => setTimeout(r, 450))
-      console.info('Contact form (demo)', data)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        toast.error(t('contact.formError'))
+        return
+      }
+
       toast.success(t('contact.formSuccess'))
       reset()
     },

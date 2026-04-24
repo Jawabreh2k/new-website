@@ -63,7 +63,7 @@ export function ContactPage() {
                 />
                 <div>
                   <p className="font-medium text-foreground">{t('contact.phoneLabel')}</p>
-                  <p className="text-muted-foreground">+974 0000 0000</p>
+                  <p className="text-muted-foreground">+97466211922</p>
                 </div>
               </li>
               <li className="flex gap-3">
@@ -73,7 +73,7 @@ export function ContactPage() {
                 />
                 <div>
                   <p className="font-medium text-foreground">{t('contact.emailLabel')}</p>
-                  <p className="text-muted-foreground">info@htaqtrading.com</p>
+                  <p className="text-muted-foreground">e.abdullah@htaqgroup.com</p>
                 </div>
               </li>
             </ul>

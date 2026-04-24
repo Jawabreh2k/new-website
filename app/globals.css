@@ -133,6 +133,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground antialiased;
   }
@@ -150,6 +153,35 @@
   }
   .animate-fade-in {
     animation: fade-in 0.6s ease-out both;
+  }
+  .scroll-reveal {
+    opacity: 0;
+    transform: translate3d(0, 42px, 0) scale(0.985);
+    filter: blur(6px);
+    transition:
+      opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform, filter;
+  }
+  .scroll-reveal--visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .scroll-reveal,
+  .scroll-reveal--visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
   }
 }
 

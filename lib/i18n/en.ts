@@ -343,7 +343,7 @@ export const en = {
     formEyebrow: 'Message',
     formTitle: 'Tell us about your operation',
     formSubtitle:
-      'This form is a UI demonstration—submissions are logged to the console and confirmed with an on-screen notice. No backend is required to preview the experience.',
+      'Send us your operation details and objectives. Your message will be delivered to our team email for follow-up.',
     companyTitle: 'Company',
     companyBlurb:
       'Premium chemical solutions for commercial laundry, housekeeping, and kitchen operations across Qatar and the Gulf region.',
@@ -362,6 +362,7 @@ export const en = {
     formSubmit: 'Send message',
     formSending: 'Sending…',
     formSuccess: 'Thank you. Our team will respond shortly.',
+    formError: 'Unable to send right now. Please try again shortly.',
     errName: 'Please enter your name',
     errEmail: 'Enter a valid email',
     errCompany: 'Company name is required',

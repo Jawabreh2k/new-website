@@ -14,6 +14,7 @@ type HeroProps = {
   align?: 'left' | 'center'
   imageSrc?: string | StaticImageData
   imageAlt?: string
+  titleClassName?: string
 }
 
 export function Hero({
@@ -26,6 +27,7 @@ export function Hero({
   align = 'left',
   imageSrc = heroHomeDefault.src,
   imageAlt = heroHomeDefault.alt,
+  titleClassName,
 }: HeroProps) {
   const centered = align === 'center'
 
@@ -56,6 +58,7 @@ export function Hero({
           <h1
             className={cn(
               'mt-3 text-balance text-3xl font-semibold tracking-tight text-primary sm:text-4xl lg:text-5xl',
+              titleClassName,
             )}
           >
             {title}
