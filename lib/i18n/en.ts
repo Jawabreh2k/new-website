@@ -92,7 +92,7 @@ export const en = {
     hkDescription:
       'Guest-facing cleanliness—surfaces, floors, and amenities aligned to luxury hotel standards.',
     hkCta: 'Open housekeeping program',
-    kitchenTitle: 'Kitchen & F&B',
+    kitchenTitle: 'Kitchen',
     kitchenDescription:
       'Food-safe cleaning systems for hygiene, compliance, and efficiency behind the line.',
     kitchenCta: 'Open kitchen program',
