@@ -19,7 +19,7 @@ export const en = {
       'Premium chemical solutions for commercial laundry, housekeeping, and kitchen operations—engineered for efficiency, consistency, and long-term partnerships across Qatar and the Gulf.',
     servicesTitle: 'Services',
     companyTitle: 'Company',
-    laundry: 'Commercial laundry',
+    laundry: 'Laundry',
     housekeeping: 'Housekeeping',
     kitchen: 'Kitchen & F&B',
     copyright: 'HTAQ Trading. All rights reserved.',
@@ -84,7 +84,7 @@ export const en = {
     ctaSecondary: 'Our partners',
   },
   services: {
-    laundryTitle: 'Commercial laundry',
+    laundryTitle: 'Laundry',
     laundryDescription:
       'Wash chemistry, finishing, and textile care for throughput, fabric life, and brand-consistent results.',
     laundryCta: 'Open laundry program',
@@ -98,7 +98,7 @@ export const en = {
     kitchenCta: 'Open kitchen program',
   },
   laundry: {
-    heroEyebrow: 'Commercial laundry',
+    heroEyebrow: 'Laundry',
     heroTitle: 'Wash chemistry engineered for throughput, finish, and textile longevity',
     heroDescription:
       'From luxury hotels to central laundries, HTAQ programs align chemistry, mechanics, and training—so your linens stay on-brand and on budget.',
@@ -106,7 +106,7 @@ export const en = {
     primaryCta: 'Request a program review',
     secondaryCta: 'View product range',
     briefEyebrow: 'At a glance',
-    briefTitle: 'Commercial laundry, in brief',
+    briefTitle: 'Laundry, in brief',
     briefSubtitle:
       'HTAQ supplies professional laundry chemistry for washer-extractors, tunnels, and on-property plants. We match products to your water, textiles, and brand standard—then support rollout with dosing, safety, and performance reviews.',
     briefP1:

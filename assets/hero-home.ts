@@ -7,5 +7,5 @@ export const heroHomeDefault: {
   alt: string
 } = {
   src: photo,
-  alt: 'Commercial laundry: stainless washers with teal-accent lighting in a professional hospitality facility',
+  alt: 'Laundry: stainless washers with teal-accent lighting in a professional hospitality facility',
 }
