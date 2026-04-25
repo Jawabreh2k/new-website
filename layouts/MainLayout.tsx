@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { ScrollToTopButton } from '@/components/ScrollToTopButton'
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,6 +8,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
+      <ScrollToTopButton />
     </div>
   )
 }

@@ -29,20 +29,39 @@ export function ServiceCard({
     <Link
       href={href}
       className={cn(
-        'group relative flex flex-col rounded-sm border border-border/80 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-lg hover:shadow-primary/5',
-        gateway ? 'p-7 sm:p-8' : 'p-6',
+        'group relative flex flex-col rounded-sm bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5',
+        gateway
+          ? 'border-2 border-border/80 p-7 sm:p-8 hover:border-primary hover:bg-muted hover:shadow-md dark:hover:border-brand-teal dark:hover:bg-muted/50 dark:hover:shadow-primary/10'
+          : 'border border-border/80 p-6 hover:border-accent/50',
         className,
       )}
     >
-      <div className="flex items-start justify-between gap-3">
-        <span
+      <div
+        className={cn(
+          'flex justify-between gap-3',
+          gateway ? 'items-center' : 'items-start',
+        )}
+      >
+        <div
           className={cn(
-            'inline-flex items-center justify-center rounded-sm bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-accent/15 group-hover:text-accent-foreground',
-            gateway ? 'size-14' : 'size-11',
+            'min-w-0',
+            gateway ? 'flex flex-1 items-center gap-3 sm:gap-4' : 'contents',
           )}
         >
-          <Icon className={gateway ? 'size-7' : 'size-5'} aria-hidden />
-        </span>
+          <span
+            className={cn(
+              'inline-flex shrink-0 items-center justify-center rounded-sm bg-primary/5 text-primary ring-1 ring-primary/10 transition-colors group-hover:bg-accent/15 group-hover:text-accent-foreground',
+              gateway ? 'size-14' : 'size-11',
+            )}
+          >
+            <Icon className={gateway ? 'size-7' : 'size-5'} aria-hidden />
+          </span>
+          {gateway ? (
+            <h3 className="min-w-0 flex-1 self-center text-xl font-semibold leading-snug tracking-tight text-foreground sm:text-2xl">
+              {title}
+            </h3>
+          ) : null}
+        </div>
         <ArrowUpRight
           className={cn(
             'shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent rtl:group-hover:-translate-x-0.5',
@@ -51,14 +70,9 @@ export function ServiceCard({
           aria-hidden
         />
       </div>
-      <h3
-        className={cn(
-          'mt-5 font-semibold tracking-tight text-foreground',
-          gateway ? 'text-xl sm:text-2xl' : 'text-lg',
-        )}
-      >
-        {title}
-      </h3>
+      {!gateway ? (
+        <h3 className="mt-5 text-lg font-semibold tracking-tight text-foreground">{title}</h3>
+      ) : null}
       <p
         className={cn(
           'mt-3 flex-1 leading-relaxed text-muted-foreground',

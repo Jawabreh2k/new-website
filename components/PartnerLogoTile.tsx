@@ -36,7 +36,12 @@ export function PartnerLogoTile({
             ? '(max-width: 640px) 100vw, 45vw'
             : '(max-width: 640px) 90vw, 360px'
         }
-        className="object-contain object-center p-2 sm:p-2.5 md:p-3"
+        className={cn(
+          'object-contain object-center',
+          page
+            ? 'p-4 sm:p-5 md:p-6'
+            : 'origin-center p-4 sm:p-5 md:p-6',
+        )}
         priority={false}
       />
     </div>

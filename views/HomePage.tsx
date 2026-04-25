@@ -19,23 +19,24 @@ export function HomePage() {
         <Hero
           eyebrow={t('home.heroEyebrow')}
           title={t('home.heroTitle')}
-          titleClassName="text-2xl sm:text-3xl lg:text-4xl"
+          titleClassName="text-xl sm:text-2xl lg:text-3xl"
           description={t('home.heroDescription')}
-          primaryCta={{ href: routes.contact, label: t('home.primaryCta') }}
+          descriptionTypewriter
           secondaryCta={{ href: '#services', label: t('home.secondaryCta') }}
+          innerClassName="py-10 pt-8 sm:py-12 sm:pt-10 lg:items-start lg:gap-12 lg:py-14 lg:pt-10"
         />
       </ScrollReveal>
       <ScrollReveal delayMs={60}>
-        <ServiceGatewaySection />
+        <PartnersPreviewSection />
       </ScrollReveal>
       <ScrollReveal delayMs={90}>
-        <ValuePropositionSection />
+        <ServiceGatewaySection />
       </ScrollReveal>
       <ScrollReveal delayMs={120}>
-        <WhyChooseSection />
+        <ValuePropositionSection />
       </ScrollReveal>
       <ScrollReveal delayMs={150}>
-        <PartnersPreviewSection />
+        <WhyChooseSection />
       </ScrollReveal>
       <ScrollReveal delayMs={180}>
         <CTASection

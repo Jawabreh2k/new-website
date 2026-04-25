@@ -1,6 +1,7 @@
 import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { TypewriterText } from '@/components/TypewriterText'
 import { cn } from '@/lib/utils'
 import { heroHomeDefault } from '@/assets/hero-home'
 
@@ -8,13 +9,17 @@ type HeroProps = {
   eyebrow?: string
   title: string
   description: string
-  primaryCta: { href: string; label: string }
+  primaryCta?: { href: string; label: string }
   secondaryCta?: { href: string; label: string }
   className?: string
   align?: 'left' | 'center'
   imageSrc?: string | StaticImageData
   imageAlt?: string
   titleClassName?: string
+  /** Applied to the inner grid wrapper (padding, alignment tweaks per page) */
+  innerClassName?: string
+  /** Animate description with a typewriter effect (e.g. home hero) */
+  descriptionTypewriter?: boolean
 }
 
 export function Hero({
@@ -28,8 +33,15 @@ export function Hero({
   imageSrc = heroHomeDefault.src,
   imageAlt = heroHomeDefault.alt,
   titleClassName,
+  innerClassName,
+  descriptionTypewriter = false,
 }: HeroProps) {
   const centered = align === 'center'
+
+  const descriptionClassName = cn(
+    'mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg',
+    centered && 'mx-auto max-w-2xl',
+  )
 
   return (
     <section
@@ -42,6 +54,7 @@ export function Hero({
         className={cn(
           'mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-14 lg:px-8 lg:py-24',
           centered && 'lg:grid-cols-1 lg:text-center',
+          innerClassName,
         )}
       >
         <div
@@ -63,29 +76,30 @@ export function Hero({
           >
             {title}
           </h1>
-          <p
-            className={cn(
-              'mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg',
-              centered && 'mx-auto max-w-2xl',
-            )}
-          >
-            {description}
-          </p>
-          <div
-            className={cn(
-              'mt-8 flex flex-wrap gap-3',
-              centered && 'justify-center',
-            )}
-          >
-            <Button variant="premium" size="lg" asChild>
-              <Link href={primaryCta.href}>{primaryCta.label}</Link>
-            </Button>
-            {secondaryCta ? (
-              <Button variant="outline" size="lg" asChild>
-                <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
-              </Button>
-            ) : null}
-          </div>
+          {descriptionTypewriter ? (
+            <TypewriterText text={description} className={descriptionClassName} speedMs={18} />
+          ) : (
+            <p className={descriptionClassName}>{description}</p>
+          )}
+          {primaryCta || secondaryCta ? (
+            <div
+              className={cn(
+                'mt-8 flex flex-wrap gap-3',
+                centered && 'justify-center',
+              )}
+            >
+              {primaryCta ? (
+                <Button variant="premium" size="lg" asChild>
+                  <Link href={primaryCta.href}>{primaryCta.label}</Link>
+                </Button>
+              ) : null}
+              {secondaryCta ? (
+                <Button variant="outline" size="lg" asChild>
+                  <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
+                </Button>
+              ) : null}
+            </div>
+          ) : null}
         </div>
 
         {!centered ? (

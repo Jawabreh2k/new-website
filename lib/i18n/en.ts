@@ -3,6 +3,10 @@ export const en = {
     primaryLabel: 'Primary',
     mobileLabel: 'Mobile',
     home: 'Home',
+    products: 'Products',
+    productsLaundry: 'Laundry',
+    productsHousekeeping: 'Housekeeping',
+    productsKitchen: 'Kitchen',
     partners: 'Partners',
     contact: 'Contact',
     requestConsultation: 'Request consultation',
@@ -38,11 +42,11 @@ export const en = {
     heroDescription:
       'Elevate laundry, housekeeping, and kitchen programs with disciplined chemistry, regional expertise, and a partnership mindset—engineered for Qatar and the Gulf.',
     primaryCta: 'Speak with our team',
-    secondaryCta: 'Explore programs',
-    gatewayEyebrow: 'Programs',
-    gatewayTitle: 'Choose a program to explore',
+    secondaryCta: 'Explore Products',
+    gatewayEyebrow: 'Products',
+    gatewayTitle: 'Choose products to explore',
     gatewaySubtitle:
-      'Our three disciplines each have dedicated pages with scope, benefits, and how we work with your team. Start here—navigation stays focused on consultation and partnerships.',
+      'Laundry, housekeeping, and kitchen each have dedicated product pages with scope, benefits, and how we work with your team. Start here—navigation stays focused on consultation and partnerships.',
     valueEyebrow: 'Value',
     valueTitle: 'Premium, professional, reliable—and built to adapt',
     valueSubtitle:
@@ -87,15 +91,15 @@ export const en = {
     laundryTitle: 'Laundry',
     laundryDescription:
       'Wash chemistry, finishing, and textile care for throughput, fabric life, and brand-consistent results.',
-    laundryCta: 'Open laundry program',
+    laundryCta: 'Open laundry products',
     hkTitle: 'Housekeeping',
     hkDescription:
       'Guest-facing cleanliness—surfaces, floors, and amenities aligned to luxury hotel standards.',
-    hkCta: 'Open housekeeping program',
+    hkCta: 'Open housekeeping products',
     kitchenTitle: 'Kitchen',
     kitchenDescription:
       'Food-safe cleaning systems for hygiene, compliance, and efficiency behind the line.',
-    kitchenCta: 'Open kitchen program',
+    kitchenCta: 'Open kitchen products',
   },
   laundry: {
     heroEyebrow: 'Laundry',

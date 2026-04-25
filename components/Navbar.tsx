@@ -3,10 +3,15 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 import { routes } from '@/lib/routes'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 import { BrandLogo } from '@/components/BrandLogo'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { LocaleSwitcher } from '@/components/LocaleSwitcher'
@@ -16,6 +21,7 @@ export function Navbar() {
   const pathname = usePathname()
   const { t } = useLocale()
   const [open, setOpen] = React.useState(false)
+  const [productsOpen, setProductsOpen] = React.useState(false)
 
   const navItems = React.useMemo(
     () =>
@@ -27,8 +33,27 @@ export function Navbar() {
     [t],
   )
 
+  const productLinks = React.useMemo(
+    () =>
+      [
+        { href: routes.laundry, label: t('nav.productsLaundry') },
+        { href: routes.housekeeping, label: t('nav.productsHousekeeping') },
+        { href: routes.kitchen, label: t('nav.productsKitchen') },
+      ] as const,
+    [t],
+  )
+
+  const productsActive =
+    pathname === routes.laundry ||
+    pathname.startsWith(`${routes.laundry}/`) ||
+    pathname === routes.housekeeping ||
+    pathname.startsWith(`${routes.housekeeping}/`) ||
+    pathname === routes.kitchen ||
+    pathname.startsWith(`${routes.kitchen}/`)
+
   React.useEffect(() => {
     setOpen(false)
+    setProductsOpen(false)
   }, [pathname])
 
   return (
@@ -44,7 +69,51 @@ export function Navbar() {
             aria-label={t('nav.primaryLabel')}
           >
             <div className="flex items-center gap-1">
-              {navItems.map((item) => {
+              {navItems.slice(0, 1).map((item) => {
+                const active =
+                  item.href === routes.home
+                    ? pathname === routes.home
+                    : pathname.startsWith(item.href)
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      'rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                      active
+                        ? 'bg-muted text-foreground'
+                        : 'text-muted-foreground hover:bg-muted/60 hover:text-foreground',
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              })}
+
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  className={cn(
+                    'inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors outline-none data-[state=open]:bg-muted/80 data-[state=open]:text-foreground',
+                    productsActive
+                      ? 'bg-muted text-foreground'
+                      : 'text-muted-foreground hover:bg-muted/60 hover:text-foreground',
+                  )}
+                >
+                  {t('nav.products')}
+                  <ChevronDown className="size-4 opacity-70" aria-hidden />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" className="min-w-[12rem]">
+                  {productLinks.map((p) => (
+                    <DropdownMenuItem key={p.href} asChild>
+                      <Link href={p.href} className="cursor-pointer">
+                        {p.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {navItems.slice(1).map((item) => {
                 const active =
                   item.href === routes.home
                     ? pathname === routes.home
@@ -68,23 +137,10 @@ export function Navbar() {
           </nav>
 
           <div className="ms-auto flex shrink-0 items-center gap-2 sm:gap-3">
-            <div className="flex items-center rounded-lg border border-border/70 bg-muted/20 p-0.5 shadow-sm backdrop-blur-sm">
-              <ThemeToggle className="rounded-md" />
-              <div
-                className="hidden h-5 w-px shrink-0 bg-border/70 sm:block"
-                aria-hidden
-              />
+            <div className="flex items-center gap-0.5 rounded-lg border border-border/70 bg-muted/20 p-0.5 shadow-sm backdrop-blur-sm">
+              <ThemeToggle className="size-9 rounded-md sm:size-10" />
               <LocaleSwitcher className="border-0 bg-transparent shadow-none" />
             </div>
-
-            <Button
-              variant="premium"
-              size="sm"
-              className="hidden whitespace-nowrap md:inline-flex"
-              asChild
-            >
-              <Link href={routes.contact}>{t('nav.requestConsultation')}</Link>
-            </Button>
 
             <button
               type="button"
@@ -104,11 +160,11 @@ export function Navbar() {
         id="mobile-nav"
         className={cn(
           'border-t border-border/80 bg-background md:hidden motion-safe:transition-all motion-safe:duration-300',
-          open ? 'max-h-80 opacity-100' : 'max-h-0 overflow-hidden opacity-0',
+          open ? 'max-h-[28rem] opacity-100' : 'max-h-0 overflow-hidden opacity-0',
         )}
       >
         <nav className="flex flex-col gap-1 px-4 py-4" aria-label={t('nav.mobileLabel')}>
-          {navItems.map((item) => (
+          {navItems.slice(0, 1).map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -117,9 +173,48 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <Button variant="premium" className="mt-2 w-full" asChild>
-            <Link href={routes.contact}>{t('nav.requestConsultation')}</Link>
-          </Button>
+
+          <div className="rounded-md">
+            <button
+              type="button"
+              className="flex w-full items-center justify-between px-3 py-3 text-start text-sm font-medium text-foreground hover:bg-muted"
+              aria-expanded={productsOpen}
+              onClick={() => setProductsOpen((v) => !v)}
+            >
+              {t('nav.products')}
+              <ChevronDown
+                className={cn(
+                  'size-4 shrink-0 opacity-70 transition-transform',
+                  productsOpen && 'rotate-180',
+                )}
+                aria-hidden
+              />
+            </button>
+            {productsOpen ? (
+              <div className="flex flex-col border-t border-border/60 pb-1">
+                {productLinks.map((p) => (
+                  <Link
+                    key={p.href}
+                    href={p.href}
+                    className="px-5 py-2.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                    onClick={() => setOpen(false)}
+                  >
+                    {p.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
+
+          {navItems.slice(1).map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-md px-3 py-3 text-sm font-medium text-foreground hover:bg-muted"
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>

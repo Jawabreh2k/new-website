@@ -5,6 +5,10 @@ export const ar: typeof en = {
     primaryLabel: 'الرئيسية',
     mobileLabel: 'الجوال',
     home: 'الرئيسية',
+    products: 'المنتجات',
+    productsLaundry: 'المغسلة',
+    productsHousekeeping: 'النظافة الفندقية',
+    productsKitchen: 'المطبخ',
     partners: 'الشركاء',
     contact: 'اتصل بنا',
     requestConsultation: 'اطلب استشارة',
@@ -40,11 +44,11 @@ export const ar: typeof en = {
     heroDescription:
       'ارتقِ ببرامج المغسلة والنظافة والمطبخ عبر كيمياء منضبطة وخبرة إقليمية وعقلية شراكة—مصممة لقطر والخليج.',
     primaryCta: 'تحدث مع فريقنا',
-    secondaryCta: 'استكشف البرامج',
-    gatewayEyebrow: 'البرامج',
-    gatewayTitle: 'اختر برنامجاً لاستكشافه',
+    secondaryCta: 'استكشف المنتجات',
+    gatewayEyebrow: 'المنتجات',
+    gatewayTitle: 'اختر منتجات لاستكشافها',
     gatewaySubtitle:
-      'لكل من مجالات عملنا الثلاث صفحة مخصصة تشرح النطاق والفوائد وطريقة تعاوننا مع فريقكم. ابدأ من هنا—يبقى التنقل مركزاً على الاستشارة والشراكات.',
+      'للمغسلة والنظافة الفندقية والمطبخ صفحة منتجات مخصصة لكل مجال تشرح النطاق والفوائد وطريقة تعاوننا مع فريقكم. ابدأ من هنا—يبقى التنقل مركزاً على الاستشارة والشراكات.',
     valueEyebrow: 'القيمة',
     valueTitle: 'احترافية وموثوقية ومرونة—في آن واحد',
     valueSubtitle:
@@ -89,15 +93,15 @@ export const ar: typeof en = {
     laundryTitle: 'المغسلة',
     laundryDescription:
       'كيمياء الغسل والتشطيب والعناية بالمنسوجات للإنتاجية وعمر القماش ونتائج متسقة مع العلامة.',
-    laundryCta: 'افتح برنامج المغسلة',
+    laundryCta: 'افتح منتجات المغسلة',
     hkTitle: 'النظافة الفندقية',
     hkDescription:
       'نظافة تلامس الضيف—الأسطح والأرضيات والمرافق بمعايير فنادق فاخرة.',
-    hkCta: 'افتح برنامج النظافة',
+    hkCta: 'افتح منتجات النظافة الفندقية',
     kitchenTitle: 'المطبخ',
     kitchenDescription:
       'أنظمة تنظيف آمنة للأغذية للالتزام والكفاءة خلف خط الإنتاج.',
-    kitchenCta: 'افتح برنامج المطبخ',
+    kitchenCta: 'افتح منتجات المطبخ',
   },
   laundry: {
     heroEyebrow: 'المغسلة',

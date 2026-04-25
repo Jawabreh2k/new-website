@@ -1,41 +1,50 @@
 'use client'
 
+import { Globe } from 'lucide-react'
 import { useLocale } from '@/components/LocaleProvider'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import type { Locale } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 
 export function LocaleSwitcher({ className }: { className?: string }) {
   const { locale, setLocale, t } = useLocale()
 
   return (
-    <div
-      className={cn(
-        'flex shrink-0 items-center rounded-md border border-border/80 bg-background/80 p-0.5',
-        className,
-      )}
-      role="group"
-      aria-label={t('nav.language')}
-    >
-      <Button
-        type="button"
-        variant={locale === 'en' ? 'secondary' : 'ghost'}
-        size="sm"
-        className="h-7 min-w-8 px-2 text-xs font-medium sm:h-8 sm:px-2.5"
-        onClick={() => setLocale('en')}
-        aria-pressed={locale === 'en'}
-      >
-        {t('nav.localeEn')}
-      </Button>
-      <Button
-        type="button"
-        variant={locale === 'ar' ? 'secondary' : 'ghost'}
-        size="sm"
-        className="h-7 min-w-8 px-2 text-xs font-medium sm:h-8 sm:px-2.5"
-        onClick={() => setLocale('ar')}
-        aria-pressed={locale === 'ar'}
-      >
-        {t('nav.localeAr')}
-      </Button>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          type="button"
+          variant="outline"
+          size="icon"
+          className={cn(
+            'size-9 shrink-0 rounded-md border-border/80 bg-background/90 shadow-sm backdrop-blur-sm sm:size-10',
+            className,
+          )}
+          aria-label={t('nav.language')}
+        >
+          <Globe className="size-4 text-foreground sm:size-[1.15rem]" strokeWidth={2} aria-hidden />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-[10.5rem]" sideOffset={6}>
+        <DropdownMenuRadioGroup
+          value={locale}
+          onValueChange={(v) => setLocale(v as Locale)}
+        >
+          <DropdownMenuRadioItem value="en" className="cursor-pointer">
+            {t('nav.localeEn')}
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="ar" className="cursor-pointer">
+            {t('nav.localeAr')}
+          </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

@@ -3,11 +3,12 @@
 import * as React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, FileText, Headphones, Package } from 'lucide-react'
+import { FileText, Headphones, Package } from 'lucide-react'
 import type { KitchenProduct } from '@/lib/kitchen-products'
 import { getKitchenProductCopy } from '@/lib/kitchen-product-i18n'
 import { routes } from '@/lib/routes'
 import { Button } from '@/components/ui/button'
+import { ProductDetailBackLink } from '@/components/ProductDetailBackLink'
 import { SectionWrapper } from '@/components/SectionWrapper'
 import { useLocale } from '@/components/LocaleProvider'
 
@@ -36,13 +37,10 @@ export function KitchenProductDetailPage({ product }: Props) {
     <>
       <section className="border-b border-border/60 bg-gradient-to-b from-muted/40 to-background">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
-          <Link
+          <ProductDetailBackLink
             href={`${routes.kitchen}#products`}
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-          >
-            <ArrowLeft className="size-4 rtl:rotate-180" aria-hidden />
-            {t('kitchen.detailBack')}
-          </Link>
+            label={t('kitchen.detailBack')}
+          />
 
           <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-14">
             <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-full border border-border/80 bg-muted/60 p-8 shadow-lg ring-2 ring-primary/5 ring-offset-4 ring-offset-background lg:max-w-lg lg:p-10">
