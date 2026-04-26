@@ -58,8 +58,8 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex min-h-20 max-w-6xl items-center px-4 py-2.5 sm:px-6 lg:px-8">
-        <div className="flex w-full min-w-0 items-center gap-3 sm:gap-4">
+      <div className="mx-auto flex min-h-14 max-w-6xl items-center px-4 py-1.5 sm:px-6 lg:px-8">
+        <div className="flex w-full min-w-0 items-center gap-2.5 sm:gap-3">
           <div className="shrink-0">
             <BrandLogo variant="header" priority />
           </div>
@@ -79,7 +79,7 @@ export function Navbar() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      'rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                      'rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors',
                       active
                         ? 'bg-muted text-foreground'
                         : 'text-muted-foreground hover:bg-muted/60 hover:text-foreground',
@@ -93,18 +93,22 @@ export function Navbar() {
               <DropdownMenu>
                 <DropdownMenuTrigger
                   className={cn(
-                    'inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors outline-none data-[state=open]:bg-muted/80 data-[state=open]:text-foreground',
+                    'inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors outline-none data-[state=open]:bg-muted/80 data-[state=open]:text-foreground',
                     productsActive
                       ? 'bg-muted text-foreground'
                       : 'text-muted-foreground hover:bg-muted/60 hover:text-foreground',
                   )}
                 >
                   {t('nav.products')}
-                  <ChevronDown className="size-4 opacity-70" aria-hidden />
+                  <ChevronDown className="size-3.5 opacity-70" aria-hidden />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="center" className="min-w-[12rem]">
                   {productLinks.map((p) => (
-                    <DropdownMenuItem key={p.href} asChild>
+                    <DropdownMenuItem
+                      key={p.href}
+                      asChild
+                      className="data-[highlighted]:bg-muted/60 data-[highlighted]:text-foreground focus:bg-muted/60 focus:text-foreground"
+                    >
                       <Link href={p.href} className="cursor-pointer">
                         {p.label}
                       </Link>
@@ -123,7 +127,7 @@ export function Navbar() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      'rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                      'rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors',
                       active
                         ? 'bg-muted text-foreground'
                         : 'text-muted-foreground hover:bg-muted/60 hover:text-foreground',
@@ -136,21 +140,21 @@ export function Navbar() {
             </div>
           </nav>
 
-          <div className="ms-auto flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="ms-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
             <div className="flex items-center gap-0.5 rounded-lg border border-border/70 bg-muted/20 p-0.5 shadow-sm backdrop-blur-sm">
-              <ThemeToggle className="size-9 rounded-md sm:size-10" />
+              <ThemeToggle className="size-8 rounded-md sm:size-9" />
               <LocaleSwitcher className="border-0 bg-transparent shadow-none" />
             </div>
 
             <button
               type="button"
-              className="inline-flex size-10 shrink-0 items-center justify-center rounded-md text-foreground transition-colors hover:bg-muted/80 md:hidden"
+              className="inline-flex size-9 shrink-0 items-center justify-center rounded-md text-foreground transition-colors hover:bg-muted/80 md:hidden"
               aria-expanded={open}
               aria-controls="mobile-nav"
               onClick={() => setOpen((v) => !v)}
             >
               <span className="sr-only">{t('nav.toggleMenu')}</span>
-              {open ? <X className="size-6" /> : <Menu className="size-6" />}
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
             </button>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 
 export type HeroSlide = { src: string; alt: string }
 
-const INTERVAL_MS = 5500
+const INTERVAL_MS = 6500
 
 export function HeroSlideshow({
   slides,
@@ -48,7 +48,9 @@ export function HeroSlideshow({
           fill
           className={cn(
             'object-cover object-center',
-            reduceMotion && i > 0 ? 'hidden' : 'transition-opacity ease-in-out duration-1000',
+            reduceMotion && i > 0
+              ? 'hidden'
+              : 'transition-opacity duration-[1800ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
             !reduceMotion && (i === active ? 'z-[1] opacity-100' : 'z-0 opacity-0'),
           )}
           sizes="(min-width: 1024px) 36rem, (min-width: 640px) 32rem, 28rem"

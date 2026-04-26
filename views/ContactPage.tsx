@@ -78,10 +78,14 @@ export function ContactPage() {
               </li>
             </ul>
             <div className="overflow-hidden rounded-sm border border-border/80 bg-muted/30">
-              <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-primary/10 via-muted to-background">
-                <p className="px-6 text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  {t('contact.mapPlaceholder')}
-                </p>
+              <div className="aspect-[4/3]">
+                <iframe
+                  title="HTAQ Trading location map"
+                  src="https://maps.google.com/maps?q=25.2792673763411,51.55179917974354&z=16&output=embed"
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </aside>

@@ -44,7 +44,7 @@ export function BrandLogo({
         className={cn(
           'w-auto max-w-none object-contain object-center',
           variant === 'header' &&
-            'h-14 object-left sm:h-16 md:h-[4.5rem]',
+            'h-12 object-left sm:h-14 md:h-16',
           variant === 'footer' &&
             'mx-auto h-16 object-center sm:h-20 md:h-[5.25rem]',
         )}

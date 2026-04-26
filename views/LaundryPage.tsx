@@ -13,6 +13,14 @@ import { Shirt, Scale, Wallet, Sparkles, Package } from 'lucide-react'
 
 export function LaundryPage() {
   const { t } = useLocale()
+  const laundryHeroSlides = React.useMemo(
+    () =>
+      laundryProducts.map((product) => ({
+        src: product.image,
+        alt: `${product.name} laundry product`,
+      })),
+    [],
+  )
 
   const benefits = React.useMemo(
     () =>
@@ -50,7 +58,7 @@ export function LaundryPage() {
         description={t('laundry.heroDescription')}
         primaryCta={{ href: routes.contact, label: t('laundry.primaryCta') }}
         secondaryCta={{ href: '#products', label: t('laundry.secondaryCta') }}
-        imageSrc="/products/laundry/complete-e1748332683540.png"
+        imageSlides={laundryHeroSlides}
         imageAlt={t('laundry.heroAlt')}
       />
 

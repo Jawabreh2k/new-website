@@ -13,6 +13,14 @@ import { Building2, ClipboardCheck, Sparkles, Package } from 'lucide-react'
 
 export function HousekeepingPage() {
   const { t } = useLocale()
+  const housekeepingHeroSlides = React.useMemo(
+    () =>
+      housekeepingProducts.map((product) => ({
+        src: product.image,
+        alt: `${product.name} housekeeping product`,
+      })),
+    [],
+  )
 
   const highlights = React.useMemo(
     () =>
@@ -59,7 +67,7 @@ export function HousekeepingPage() {
           href: '#products',
           label: t('housekeeping.viewProductRange'),
         }}
-        imageSrc="/products/housekeeping/multi-s2-spray.png"
+        imageSlides={housekeepingHeroSlides}
         imageAlt={t('housekeeping.heroAlt')}
       />
       <SectionWrapper

@@ -13,6 +13,14 @@ import { BadgeCheck, ChefHat, Timer, Package } from 'lucide-react'
 
 export function KitchenPage() {
   const { t } = useLocale()
+  const kitchenHeroSlides = React.useMemo(
+    () =>
+      kitchenProducts.map((product) => ({
+        src: product.image,
+        alt: `${product.name} kitchen product`,
+      })),
+    [],
+  )
 
   const pillars = React.useMemo(
     () =>
@@ -69,7 +77,7 @@ export function KitchenPage() {
           href: '#products',
           label: t('kitchen.viewProductRange'),
         }}
-        imageSrc="/products/kitchen/crystal-decho-10l-1.jpg"
+        imageSlides={kitchenHeroSlides}
         imageAlt={t('kitchen.heroAlt')}
       />
       <SectionWrapper

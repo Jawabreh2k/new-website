@@ -41,6 +41,7 @@ export function Hero({
   descriptionTypewriter = false,
 }: HeroProps) {
   const centered = align === 'center'
+  const useTornFrame = Boolean(imageSlides && imageSlides.length > 0)
 
   const descriptionClassName = cn(
     'mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg',
@@ -108,7 +109,14 @@ export function Hero({
 
         {!centered ? (
           <div className="relative w-full max-w-md justify-self-center motion-safe:animate-fade-in sm:max-w-lg lg:max-w-xl lg:justify-self-end rtl:lg:justify-self-start">
-            <div className="relative aspect-square w-full overflow-hidden rounded-full border border-border/80 bg-muted shadow-xl shadow-primary/10 ring-2 ring-primary/10 ring-offset-4 ring-offset-background">
+            <div
+              className={cn(
+                'relative aspect-square w-full overflow-hidden bg-muted shadow-xl shadow-primary/10',
+                useTornFrame
+                  ? 'hero-torn-frame border-0 ring-0 ring-offset-0'
+                  : 'rounded-full border border-border/80 ring-2 ring-primary/10 ring-offset-4 ring-offset-background',
+              )}
+            >
               {imageSlides && imageSlides.length > 0 ? (
                 <HeroSlideshow slides={imageSlides} />
               ) : (
