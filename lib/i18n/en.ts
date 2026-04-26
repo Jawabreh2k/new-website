@@ -38,11 +38,16 @@ export const en = {
   },
   home: {
     heroEyebrow: 'HTAQ Trading',
-    heroTitle: 'Premium chemical solutions for world-class hospitality operations',
+    heroTitle: 'Welcome to HTAQ Trading',
     heroDescription:
-      'Elevate laundry, housekeeping, and kitchen programs with disciplined chemistry, regional expertise, and a partnership mindset—engineered for Qatar and the Gulf.',
+      'At HTAQ, we elevate commercial laundry and hospitality standards through advanced, high-performance solutions that go beyond conventional products. In industries where presentation, hygiene, and consistency are critical, we ensure every detail is optimized.\n\nWith a strong presence in Qatar and across the Gulf, we understand the operational challenges within hospitality, laundry, and real estate sectors. Our expertise allows us to address key gaps—enhancing wash quality, optimizing chemical usage, and providing reliable technical support with sustainable cost control.\n\nOur solutions integrate advanced chemical technology, intelligent dosing systems, and specialized industry knowledge. From initial assessment to full implementation and ongoing support, we ensure maximum efficiency and consistent results.\n\nIn partnership with leading international brands, we deliver innovative solutions that protect fabric quality, improve resource efficiency, and maintain the highest hygiene standards.\n\nAt HTAQ, we build long-term partnerships—offering continuous support, proactive guidance, and uncompromising attention to detail.',
     primaryCta: 'Speak with our team',
     secondaryCta: 'Explore Products',
+    heroSlideAlt1:
+      'Professional cleaner holding a bucket of commercial cleaning supplies',
+    heroSlideAlt2: 'Staff sanitizing a modern office desk with spray and microfiber cloth',
+    heroSlideAlt3: 'Row of stainless commercial laundry washers and dryers in operation',
+    heroSlideAlt4: 'Basket of colorful detergents, cloths, and cleaning tools beside a mop',
     gatewayEyebrow: 'Products',
     gatewayTitle: 'Choose products to explore',
     gatewaySubtitle:

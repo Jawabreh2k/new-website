@@ -1,5 +1,6 @@
 import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
+import { HeroSlideshow, type HeroSlide } from '@/components/HeroSlideshow'
 import { Button } from '@/components/ui/button'
 import { TypewriterText } from '@/components/TypewriterText'
 import { cn } from '@/lib/utils'
@@ -13,6 +14,8 @@ type HeroProps = {
   secondaryCta?: { href: string; label: string }
   className?: string
   align?: 'left' | 'center'
+  /** When set, replaces the single hero image with a crossfading slideshow */
+  imageSlides?: HeroSlide[]
   imageSrc?: string | StaticImageData
   imageAlt?: string
   titleClassName?: string
@@ -30,6 +33,7 @@ export function Hero({
   secondaryCta,
   className,
   align = 'left',
+  imageSlides,
   imageSrc = heroHomeDefault.src,
   imageAlt = heroHomeDefault.alt,
   titleClassName,
@@ -105,14 +109,18 @@ export function Hero({
         {!centered ? (
           <div className="relative w-full max-w-md justify-self-center motion-safe:animate-fade-in sm:max-w-lg lg:max-w-xl lg:justify-self-end rtl:lg:justify-self-start">
             <div className="relative aspect-square w-full overflow-hidden rounded-full border border-border/80 bg-muted shadow-xl shadow-primary/10 ring-2 ring-primary/10 ring-offset-4 ring-offset-background">
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                fill
-                className="object-cover object-center"
-                sizes="(min-width: 1024px) 36rem, (min-width: 640px) 32rem, 28rem"
-                priority
-              />
+              {imageSlides && imageSlides.length > 0 ? (
+                <HeroSlideshow slides={imageSlides} />
+              ) : (
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(min-width: 1024px) 36rem, (min-width: 640px) 32rem, 28rem"
+                  priority
+                />
+              )}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent" />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/15 via-transparent to-brand-teal/5" />
             </div>

@@ -120,10 +120,10 @@ export function HousekeepingPage() {
           {opsItems.map((item) => (
             <li
               key={item}
-              className="flex gap-3 rounded-sm border border-border/70 bg-background px-4 py-3 text-sm text-muted-foreground"
+              className="group flex gap-3 rounded-sm border-2 border-border/80 bg-card px-4 py-3 text-sm text-muted-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-muted hover:shadow-md hover:shadow-primary/10 dark:hover:border-brand-teal dark:hover:bg-muted/50"
             >
               <span
-                className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent"
+                className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent transition-colors group-hover:bg-brand-teal"
                 aria-hidden
               />
               {item}

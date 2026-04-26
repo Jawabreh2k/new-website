@@ -132,7 +132,16 @@ export function KitchenPage() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
               {optimizeItems.map((line) => (
-                <li key={line}>{line}</li>
+                <li
+                  key={line}
+                  className="group flex gap-3 rounded-sm border-2 border-border/80 bg-card px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-muted hover:shadow-md hover:shadow-primary/10 dark:hover:border-brand-teal dark:hover:bg-muted/50"
+                >
+                  <span
+                    className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent transition-colors group-hover:bg-brand-teal"
+                    aria-hidden
+                  />
+                  <span>{line}</span>
+                </li>
               ))}
             </ul>
           </div>
@@ -142,7 +151,16 @@ export function KitchenPage() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
               {gainItems.map((line) => (
-                <li key={line}>{line}</li>
+                <li
+                  key={line}
+                  className="group flex gap-3 rounded-sm border-2 border-border/80 bg-card px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-muted hover:shadow-md hover:shadow-primary/10 dark:hover:border-brand-teal dark:hover:bg-muted/50"
+                >
+                  <span
+                    className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent transition-colors group-hover:bg-brand-teal"
+                    aria-hidden
+                  />
+                  <span>{line}</span>
+                </li>
               ))}
             </ul>
           </div>
